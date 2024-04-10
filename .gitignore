@@ -45,3 +45,4 @@ terraform/entire-tf-output
 *.tfstate.*
 .terraform.lock.hcl
 terraform.tfvars
+demo.zip
