@@ -1,10 +1,10 @@
-package com.tsimerekis.demo;
+package com.tsimerekis.reverseengineerer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class ReverseEngineererApplicationTests {
 
 	@Test
 	void contextLoads() {

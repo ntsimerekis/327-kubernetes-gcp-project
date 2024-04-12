@@ -9,23 +9,17 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tsimerekis</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>reverse-engineerer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>327Project</description>
+	<name>reverse-engineerer</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -35,9 +29,11 @@
 		</dependency>
 
 		<dependency>
-      		<groupId>org.springframework.boot</groupId>
-      		<artifactId>spring-boot-starter-web</artifactId>
-    	</dependency>
+    		<groupId>javax.servlet</groupId>
+   		 	<artifactId>javax.servlet-api</artifactId>
+    		<version>4.0.1</version>
+    		<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
