@@ -156,6 +156,12 @@ resource "kubernetes_service_account" "jss_pos" {
   }
 }
 
+resource "google_project_iam_member" "jss_pos_role_artifactregistry_reader" {
+  project = var.project_id
+  role    = "roles/artifactregistry.reader"
+  member  = "serviceAccount:${google_service_account.jss_pos.email}"
+}
+
 resource "google_project_iam_member" "jss_pos_role_metric_writer" {
   project = var.project_id
   role    = "roles/monitoring.metricWriter"
