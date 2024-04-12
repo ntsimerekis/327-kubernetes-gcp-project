@@ -21,12 +21,12 @@ public class TestRestController {
     }
 
     @GetMapping("/ready")
-    public String ready(@RequestParam String param) {
+    public String ready() {
         return new String("ok");
     }
 
     @GetMapping("/healthy")
-    public String healthy(@RequestParam String param) {
+    public String healthy() {
         return new String("ok");
     }
     
