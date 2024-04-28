@@ -70,7 +70,7 @@ export default {
       formData.append('birdCode', this.birdCode)
       formData.append('plusCode', this.plusCode)
       try {
-        await axios.post('http://localhost:8080/upload', formData)
+        await axios.post('/upload', formData)
         console.log("file uploaded!")
       } catch (err){
         console.log(err);
