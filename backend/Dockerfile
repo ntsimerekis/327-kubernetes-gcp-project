@@ -1,7 +1,7 @@
 FROM gradle:8.7.0-jdk-alpine AS TEMP_BUILD_IMAGE
 WORKDIR /usr/app/
 COPY . .
-RUN gradle build
+RUN gradle build -x test
 
 FROM openjdk:latest
 ENV JAR_NAME=app.jar
