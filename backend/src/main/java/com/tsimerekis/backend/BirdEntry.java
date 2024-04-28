@@ -8,7 +8,7 @@ import com.google.cloud.spring.data.spanner.core.mapping.NotMapped;
 import com.google.cloud.spring.data.spanner.core.mapping.Table;
 import org.springframework.web.multipart.MultipartFile;
 
-@Table(name = "entries")
+@Table(name = "birds")
 public class BirdEntry {
 
     @PrimaryKey

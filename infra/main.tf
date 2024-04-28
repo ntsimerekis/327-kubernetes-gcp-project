@@ -55,6 +55,7 @@ module "enable_google_apis" {
     "iam.googleapis.com",
     "monitoring.googleapis.com",
     "spanner.googleapis.com",
+    "storage.googleapis.com"
   ]
 }
 
@@ -217,7 +218,7 @@ resource "google_spanner_database" "jss_pos" {
   version_retention_period = "3d"
   deletion_protection      = false
   ddl = [
-    file("${path.module}/sql-schema/items.sql"),
+    file("${path.module}/sql-schema/birds.sql"),
   ]
 }
 
@@ -236,15 +237,14 @@ resource "google_project_iam_member" "jss_pos_role_storage_object_admin" {
 resource "random_string" "jss_pos" {
   length  = 10
   special = false
-  upper   = true
-  number  = true
+  upper   = false
+  numeric  = true
   lower   = true
 }
 
 resource "google_storage_bucket" "jss_pos" {
   location = var.region
   name     = "unique-bucket-${random_string.jss_pos.result}"
-  acl      = "private"
 }
 
 output "random_index" {
