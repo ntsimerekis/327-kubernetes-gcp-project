@@ -34,7 +34,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: api-server
-        image: us-docker.pkg.dev/point-of-sale-ci/pos-images/api-server:v0.3.0-jss
+        image: us-docker.pkg.dev/point-of-sale-ci/pos-images/api-server:v0.3.1-jss
         securityContext:
           privileged: false
           allowPrivilegeEscalation: false
@@ -43,16 +43,21 @@ spec:
             drop:
               - all
         env:
-        - name: INVENTORY_EP
+        - name: SPANNER_ID
           valueFrom:
             configMapKeyRef:
               name: service-configs
-              key: INVENTORY_EP
-        - name: PAYMENTS_EP
+              key: SPANNER_ID
+        - name: SPANNER_DATABASE
           valueFrom:
             configMapKeyRef:
               name: service-configs
-              key: PAYMENTS_EP
+              key: SPANNER_DATABASE
+        - name: BUCKET_ID
+          valueFrom:
+            configMapKeyRef:
+              name: service-configs
+              key: BUCKET_ID
         resources:
           requests:
             cpu: 100m

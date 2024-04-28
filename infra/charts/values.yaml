@@ -18,5 +18,6 @@ service_account: ${SERVICE_ACCOUNT}
 
 # Configurations specific to spanner
 project_id: ${PROJECT_ID}
+bucket_id:  ${BUCKET_ID}
 spanner_id: ${SPANNER_ID}
 spanner_database: ${SPANNER_DATABASE}

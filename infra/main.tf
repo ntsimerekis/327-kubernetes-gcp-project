@@ -132,6 +132,7 @@ resource "google_container_cluster" "jss_pos" {
   enable_autopilot    = true
   resource_labels     = var.labels
   deletion_protection = false
+  allow_net_admin     = true
 
   cluster_autoscaling {
     auto_provisioning_defaults {
@@ -222,7 +223,41 @@ resource "google_spanner_database" "jss_pos" {
   ]
 }
 
+resource "google_project_iam_member" "jss_pos_role_storage_object_admin" {
+  project = var.project_id
+  role    = "roles/storage.objectAdmin"
+  member  = "serviceAccount:${google_service_account.jss_pos.email}"
+}
+
 #-----------------------------------------------------------------------
+
+########################################################################
+#                       Google Storage resources
+########################################################################
+
+resource "random_string" "jss_pos" {
+  length  = 10
+  special = false
+  upper   = true
+  number  = true
+  lower   = true
+}
+
+resource "google_storage_bucket" "jss_pos" {
+  location = var.region
+  name     = "unique-bucket-${random_string.jss_pos.result}"
+  acl      = "private"
+}
+
+output "random_index" {
+  value = random_string.jss_pos.result
+  description = "The random index string"
+}
+
+output "bucket_name" {
+  value = google_storage_bucket.jss_pos.name
+  description = "The name of the bucket"
+}
 
 ########################################################################
 #  Helm release resource to deploy the application into the GKE cluster
@@ -231,6 +266,7 @@ resource "google_spanner_database" "jss_pos" {
 resource "helm_release" "jss_point_of_sale" {
   depends_on = [
     google_container_cluster.jss_pos,
+    google_storage_bucket.jss_pos,
     google_spanner_database.jss_pos,
     google_compute_address.jss_pos,
   ]
@@ -257,6 +293,12 @@ resource "helm_release" "jss_point_of_sale" {
     name  = "spanner_id"
     value = google_spanner_instance.jss_pos.name
   }
+
+  set {
+    name  = "bucket_id"
+    value = google_storage_bucket.jss_pos.name
+  }
+
   set {
     name  = "spanner_database"
     value = google_spanner_database.jss_pos.name

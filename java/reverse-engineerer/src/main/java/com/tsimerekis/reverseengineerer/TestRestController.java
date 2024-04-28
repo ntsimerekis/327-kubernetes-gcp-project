@@ -29,5 +29,5 @@ public class TestRestController {
     public String healthy() {
         return new String("ok");
     }
-    
+
 }
