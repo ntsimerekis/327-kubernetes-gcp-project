@@ -218,8 +218,6 @@ resource "google_spanner_database" "jss_pos" {
   deletion_protection      = false
   ddl = [
     file("${path.module}/sql-schema/items.sql"),
-    file("${path.module}/sql-schema/payments.sql"),
-    file("${path.module}/sql-schema/payment_units.sql"),
   ]
 }
 
