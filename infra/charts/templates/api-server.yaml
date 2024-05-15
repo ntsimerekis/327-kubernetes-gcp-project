@@ -25,7 +25,7 @@ spec:
       labels:
         app: api-server
     spec:
-      serviceAccountName: default
+      serviceAccountName: "{{ .Values.service_account }}"
       terminationGracePeriodSeconds: 5
       securityContext:
         runAsNonRoot: true

@@ -1,5 +1,8 @@
 # Terraform Dynamic Java Application on GKE
 
+## Video Link
+https://csulb-my.sharepoint.com/:v:/g/personal/nicholas_tsimerekis01_student_csulb_edu/EQrJz1kdZSxIl5B52POCtKwBdGVade9yhpjA5aLaL3qtGA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=lPdmMS
+
 ## Quickstart
 
 Try out the Terraform in this repository.
@@ -15,10 +18,10 @@ Try out the Terraform in this repository.
 
 ### Steps
 
-#### 1. Clone this git repository.
+#### 1. Set up Google cloud build to run the dockerfile in backend/.
 
 ```
-git clone https://github.com/GoogleCloudPlatform/terraform-example-java-dynamic-point-of-sale
+Also be sure to set up the image location correctly in helm charts. api-server.yaml
 ```
 
 #### 2. Go into the `infra/` folder.
@@ -27,34 +30,26 @@ git clone https://github.com/GoogleCloudPlatform/terraform-example-java-dynamic-
 cd terraform-example-java-dynamic-point-of-sale/infra
 ```
 
-#### 3. Run the Terraform.
+#### 3. Change the project name in the terraform.tfvars file
+
+```
+project_id = "cecs-327-project"
+```
+
+#### 4. Run the Terraform.
 
 ```
 terraform init
-terraform apply -var 'project_id=MY_PROJECT_ID'
+terraform apply
 ```
 
-Replace `MY_PROJECT_ID` with your [Google Cloud Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) ID. We recommend creating a new project so you can easily clean up all resources by deleting the entire project.
+#### 5. Destroy the Terraform.
+
+```
+terraform destroy
+```
 
 You may need to type "Yes", when after you run `terraform apply`.
-
-#### 4. Report any bugs as a GitHub Issue.
-
-a. Search the [existing list of GitHub](https://github.com/GoogleCloudPlatform/terraform-example-java-dynamic-point-of-sale/issues?q=is%3Aissue).
-
-b. If there isn't already a GitHub issue for your bug, [create a new GitHub issue](https://github.com/GoogleCloudPlatform/terraform-example-java-dynamic-point-of-sale/issues/new/choose).
-
-#### 5. Get the IP address of the deployment.
-
-TBD
-
-## Contributing
-
-If you would like to contribute to this repository, read [CONTRIBUTING](CONTRIBUTING.md).
-
-Please note that this project is released with a Contributor Code of Conduct. By participating in
-this project you agree to abide by its terms. See [Code of Conduct](CODE_OF_CONDUCT.md) for more
-information.
 
 ## License
 

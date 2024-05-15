@@ -1,4 +1,4 @@
-# Dynamic Java Application on GKE
+# Dynamic Java Citizen Science Proof of Concept Application on GKE
 
 ## Description
 

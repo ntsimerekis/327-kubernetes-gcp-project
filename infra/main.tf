@@ -243,8 +243,9 @@ resource "random_string" "jss_pos" {
 }
 
 resource "google_storage_bucket" "jss_pos" {
-  location = var.region
-  name     = "unique-bucket-${random_string.jss_pos.result}"
+  location      = var.region
+  name          = "unique-bucket-${random_string.jss_pos.result}"
+  force_destroy = true
 }
 
 output "random_index" {
